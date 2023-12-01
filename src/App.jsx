@@ -5,6 +5,7 @@ import { AuthContextProvider } from "./Context/AuthContext";
 import Login from "./Pages/Login";
 import Account from "./Pages/Account";
 import { SignUp } from "./Pages/SignUp";
+import Protected from "./Context/Protected";
 export default function App() {
   return (
     <div>
@@ -14,7 +15,14 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/Account" element={<Account />} />
+          <Route
+            path="/Account"
+            element={
+              <Protected>
+                <Account />
+              </Protected>
+            }
+          />
         </Routes>
       </AuthContextProvider>
     </div>

@@ -6,6 +6,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user, login } = UserAuth();
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const LoginUser = async (e) => {
     e.preventDefault();
@@ -13,6 +14,7 @@ export default function Login() {
       await login(email, password);
       navigate("/");
     } catch (error) {
+      setError(error.message);
       console.log(error);
     }
   };
@@ -28,6 +30,11 @@ export default function Login() {
         <div className="max-w-[450px] h-[550px] rounded-sm mx-auto bg-black/75 text-white">
           <div className="max-w-[350px] mx-auto py-16">
             <h1 className="font-semibold text-2xl">Sign In</h1>
+            {error ? (
+              <p className="text-white bg-red-500 font-semibold text-sm p-2 w-full rounded-sm my-2">
+                {error}
+              </p>
+            ) : null}
             <form
               onSubmit={LoginUser}
               className="flex flex-col w-full h-full py-6 justify-evenly"
@@ -63,7 +70,7 @@ export default function Login() {
                 <span className="text-sm text-gray-600 mr-2">
                   Already subscribed to Netflix ?
                 </span>{" "}
-                <Link to={"/login"}>Sing In</Link>{" "}
+                <Link to={"/signUp"}>Sing Up</Link>{" "}
               </p>
             </form>
           </div>

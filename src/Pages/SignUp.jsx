@@ -62,7 +62,7 @@ export const SignUp = () => {
                 <span className="text-sm text-gray-600 mr-2">
                   New to Netflix ?
                 </span>{" "}
-                <Link to={"/signUp"}>Sing In</Link>{" "}
+                <Link to={"/login"}>Sing In</Link>{" "}
               </p>
             </form>
           </div>
